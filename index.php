@@ -52,7 +52,7 @@ $obj = new DbOperation();
                 <div class="col-md-8 offset-md-2">
                     <div class="card text-center">
                         <div class="card-header bg-info text-light">
-                            Enter Medicie Details
+                            Enter Product Details
                         </div>
                         <div class="card-body">
                             <?php
@@ -90,7 +90,7 @@ $obj = new DbOperation();
                                     <tr>
                                         <td><h6>Name : </h6></td>
                                         <td>
-                                            <input type="text" class="form-control" name="mediname" placeholder="Enter medicine name ">
+                                            <input type="text" class="form-control" name="mediname" placeholder="Enter Product name ">
                                         </td>
                                     </tr>
                                     <tr>
@@ -128,6 +128,9 @@ $obj = new DbOperation();
                         <tbody>
                             <?php
                             $rows = $obj->fetch_data("medicine",'id','DESC');
+                            if($rows == false){
+                                echo '<a href="" class="btn btn-warning btn-block">No Avilable Data</a>';
+                            }else{
                             $i =0;
                             foreach($rows as $row){
                             ?>
@@ -138,7 +141,7 @@ $obj = new DbOperation();
                                 <td><a href="index.php?update&id=<?= base64_encode($row['id'])?>" class="btn btn-info btn-sm"> Update</a></td>
                                 <td><a href="class/action.php?delete&id=<?= base64_encode($row['id'])?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure ?')" > Delete</a></td>
                             </tr>
-                            <?php } ?>
+                            <?php }  } ?>
                         </tbody>
                     </table>
                 </div>
